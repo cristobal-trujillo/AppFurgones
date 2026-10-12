@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Paleta de marca. Azul profundo (confianza, institucional) con amarillo
+   furgón escolar como acento.
+   --------------------------------------------------------------------------- */
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+
+  --color-brand-50: #f2f6fc;
+  --color-brand-100: #e3ebf8;
+  --color-brand-200: #c5d6f0;
+  --color-brand-300: #9bb8e3;
+  --color-brand-400: #6b94d2;
+  --color-brand-500: #4772bd;
+  --color-brand-600: #33589f;
+  --color-brand-700: #2a4780;
+  --color-brand-800: #223a68;
+  --color-brand-900: #142547;
+  --color-brand-950: #0a152b;
+
+  --color-accent-200: #fee7b4;
+  --color-accent-300: #fdd27a;
+  --color-accent-400: #fbbd4a;
+  --color-accent-500: #f5a623;
+  --color-accent-600: #d6860d;
+  --color-accent-700: #a9660a;
+}
+
+/* Colores semánticos: una sola definición, dos temas. */
+:root {
+  --surface: #ffffff;
+  --surface-soft: #f5f8fd;
+  --surface-raised: #ffffff;
+  --ink: #142547;
+  --ink-muted: #51618a;
+  --line: #e1e8f4;
+  --shadow-card: 0 1px 2px rgb(10 21 43 / 0.04),
+    0 8px 24px -12px rgb(10 21 43 / 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #080f20;
+    --surface-soft: #0c1730;
+    --surface-raised: #0f1e3c;
+    --ink: #e9eff9;
+    --ink-muted: #9db0d2;
+    --line: #1b2d53;
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  }
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-surface-raised: var(--surface-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --shadow-card: var(--shadow-card);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Titulares con tracking ajustado: se ven menos "plantilla". */
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+}
+
+/* Tipografía de las páginas legales. */
+.legal-prose h2 {
+  margin-top: 2.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.legal-prose h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.legal-prose p,
+.legal-prose li {
+  color: var(--ink-muted);
+  line-height: 1.75;
+}
+
+.legal-prose p {
+  margin-bottom: 1rem;
+}
+
+.legal-prose ul {
+  margin: 0 0 1.25rem 1.25rem;
+  list-style: disc;
+}
+
+.legal-prose li {
+  margin-bottom: 0.5rem;
+}
+
+.legal-prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.legal-prose a {
+  color: var(--color-brand-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .legal-prose a {
+    color: var(--color-accent-400);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
